@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db             # Match container hostname
+  port: 5432
+  username: rails
+  password: secret
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: hello_porter_development
+
+test:
+  <<: *default
+  database: hello_porter_test
+
+production:
+  <<: *default
+  database: hello_porter_production
